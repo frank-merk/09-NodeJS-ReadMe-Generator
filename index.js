@@ -13,7 +13,7 @@ const questions = [
     {
       type: 'input',
       name: 'description',
-      message: 'Briefly describe what your project is and what it does'
+      message: 'Briefly describe what your project does.'
     },
     {
       type: 'input',
@@ -53,22 +53,26 @@ const questions = [
       },
   ];
 
+// TODO: Create a function to write README file
   function writeToFile(fileName, data) {
     fs.writeFile(fileName, data, (err) =>
         err ? console.log(err) : console.log('Success! ReadMe Written')
     );
 }
 
+// Function call to initialize app
 
+// init function with one argument which will be our questions array
 function init(prompts) {
+  // tell inquirer to run that questions array into the terminal
     inquirer.prompt(prompts)
         .then((answers) => {
-   // Create a function to write README file
+    
         // Take what we are storing in newReadMe and write it. If there's an error, return the error, if not alert the console the file was written successfully
-            const newFile = markdown(answers)
-            writeToFile("newREADME.md", newFile)
+
+            const newREADME = markdown(answers);
+            // function we made earlier
+            writeToFile("newREADME.md", newREADME);
         })
-
 }
-
 init(questions);

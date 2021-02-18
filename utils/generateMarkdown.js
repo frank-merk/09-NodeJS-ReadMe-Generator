@@ -48,10 +48,11 @@ function renderLicenseLink(license) {
   return url;
 }
 
-
-
 // TODO: Create a function to generate markdown for README
+
+//Passing data in
 generateMarkdown = (data) => {
+//ternary to create the template, filling in with info generated from user through inquire responses
   return `# ${data.project}
 
   ${renderLicenseBadge(data.license)}
@@ -97,5 +98,5 @@ generateMarkdown = (data) => {
 
 `;
 }
-
+// make this available
 module.exports = generateMarkdown;
