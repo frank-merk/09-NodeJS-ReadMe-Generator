@@ -1,14 +1,16 @@
 {
-  "name": "static-site",
+  "name": "readmeapp",
   "version": "1.0.0",
-  "description": "",
+  "description": "Writes ReadMe files",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "inquirer": "^6.3.1"
-  }
+    "fs": "^0.0.1-security",
+    "inquirer": "^6.5.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "none"
+  },
+  "author": "Frank Merchlewitz",
+  "license": "MIT"
 }
