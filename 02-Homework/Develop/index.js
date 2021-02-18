@@ -1,10 +1,11 @@
-Include packages needed for this application
+// Include packages needed for this application
 const inquirer = require("inquirer");
 const fs = require("fs");
 const generateMarkdown = require("utils/generateMarkdown.js")
 
-Create an array of questions for user input
-const questions = [{
+// Create an array of questions for user input
+const questions = [
+        {
           type: 'input',
           name: 'project',
           message: 'What is your project title?'
@@ -27,7 +28,7 @@ const questions = [{
         {
           type: 'input',
           name: 'contributors',
-          message: 'Please list other contributors to this project if there are any'
+          message: 'Please list other contributors to this project if there are any.'
         },
         {
           type: 'input',
@@ -37,98 +38,35 @@ const questions = [{
         {
             type: 'list',
             name: 'licenses',
-            message: 'What type of license does this project have?'
+            message: 'What type of license does this project have?',
+            choices: ['Apache 2.0', 'GNU General Public License v3.0', 'MIT']
           },
-      ]];
+          {
+            type: 'input',
+            name: 'github',
+            message: 'What is your github username?'
+          },
+          {
+            type: 'input',
+            name: 'email',
+            message: 'What is your email address?'
+          },
+      ];
+// ask the questions, then feed that data into a generate markdown function that creates newReadMe
+inquirer prompt(questions).then((data) => {
+    const newReadMe = generateMarkdown(data);
 
-// TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+    // Create a function to write README file
+    // Take what we are storing in newReadMe and write it. If there's an error, return the error, if not alert the console the file was written successfully
+    fs.writeFile('README.md', newReadMe, (err) =>
+    err ? console.log(err) : console.log('Successfully created README.md!')
+})
 
-// TODO: Create a function to initialize app
-function init() {}
+
+
+// TODO: Create a function to initialize app (don't think i need this with inquirer)
+// function init() {}
 
 // Function call to initialize app
-init();
+//init();
 
-// inquirer
-//   .prompt([
-//     {
-//       type: 'input',
-//       name: 'name',
-//       message: 'What is your name?',
-//     },
-//     {
-//       type: 'input',
-//       name: 'location',
-//       message: 'Where are you from?',
-//     },
-//     {
-//       type: 'input',
-//       name: 'hobby',
-//       message: 'What is your favorite hobby?',
-//     },
-//     {
-//       type: 'input',
-//       name: 'food',
-//       message: 'What is your favorite food?',
-//     },
-//     {
-//       type: 'input',
-//       name: 'github',
-//       message: 'Enter your GitHub Username',
-//     },
-//     {
-//       type: 'input',
-//       name: 'linkedin',
-//       message: 'Enter your LinkedIn URL.',
-//     },
-//   ])
-//   .then((answers) => {
-//     const htmlPageContent = generateHTML(answers);
-
-//     fs.writeFile('index.html', htmlPageContent, (err) =>
-//       err ? console.log(err) : console.log('Successfully created index.html!')
-//     );
-//   });
-
-
-//   inquirer
-//   .prompt([
-//     {
-//       type: 'input',
-//       name: 'name',
-//       message: 'What is your name?',
-//     },
-//     {
-//       type: 'input',
-//       name: 'location',
-//       message: 'Where are you from?',
-//     },
-//     {
-//       type: 'input',
-//       name: 'hobby',
-//       message: 'What is your favorite hobby?',
-//     },
-//     {
-//       type: 'input',
-//       name: 'food',
-//       message: 'What is your favorite food?',
-//     },
-//     {
-//       type: 'input',
-//       name: 'github',
-//       message: 'Enter your GitHub Username',
-//     },
-//     {
-//       type: 'input',
-//       name: 'linkedin',
-//       message: 'Enter your LinkedIn URL.',
-//     },
-//   ])
-//   .then((answers) => {
-//     const htmlPageContent = generateHTML(answers);
-
-//     fs.writeFile('index.html', htmlPageContent, (err) =>
-//       err ? console.log(err) : console.log('Successfully created index.html!')
-//     );
-//   });
