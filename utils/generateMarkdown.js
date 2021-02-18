@@ -1,11 +1,26 @@
 // Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
 function renderLicenseBadge(license) {
-  if (license === "None") {
-    return " ";
-  } else {
-    return `![GitHub License](https://img.shields.io/badge/License-${license}-blue.svg)`
-  } 
+    let url;
+    switch(license ) {
+      case "Apache 2.0":
+      url = "License-Apache%202.0-blue.svg";
+      break;
+    case "GNU":
+      url = "License-MIT-yellow.svg";
+      break;
+    case "MIT":
+      url = "License-MIT-yellow.svg";
+      break;
+    case "Creative Commons":
+      url = "License-CC%20BY%204.0-lightgrey.svg";
+      break;
+    default:
+      url = "";
+      break;
+    }
+    return `![GitHub License](https://img.shields.io/badge/${url})`
+  
 }
 
 //  Create a function that returns the license link
@@ -15,16 +30,16 @@ function renderLicenseLink(license) {
   var url = " ";
   switch(license) {
     case "Apache 2.0":
-      url = "https://opensource.org/licenses/Apache2.0";
+      url = "opensource.org/licenses/Apache2.0";
       break;
     case "GNU":
-      url = "(https://www.gnu.org/licenses/gpl-3.0)";
+      url = "www.gnu.org/licenses/gpl-3.0";
       break;
     case "MIT":
-      url = "https://opensource.org/licenses/MIT";
+      url = "opensource.org/licenses/MIT";
       break;
     case "Creative Commons":
-      url = "(http://creativecommons.org/publicdomain/zero/1.0/)";
+      url = "creativecommons.org/publicdomain/zero/1.0/";
       break;
     default:
       url = "";
@@ -72,7 +87,7 @@ generateMarkdown = (data) => {
 
   ## License
 
-  [${data.license}]${renderLicenseLink(data.license)}
+  [${data.license}](https://${renderLicenseLink(data.license)}
 
   ## Questions
 
