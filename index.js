@@ -53,17 +53,22 @@ const questions = [
       },
   ];
 
+  function writeToFile(fileName, data) {
+    fs.writeFile(fileName, data, (err) =>
+        err ? console.log(err) : console.log('Success! ReadMe Written')
+    );
+}
 
-function init(ask) {
 
-    inquirer.prompt(ask).then((data) => {
-        const newReadMe = markdown(data);
-
-        // Create a function to write README file
+function init(prompts) {
+    inquirer.prompt(prompts)
+        .then((answers) => {
+   // Create a function to write README file
         // Take what we are storing in newReadMe and write it. If there's an error, return the error, if not alert the console the file was written successfully
-        fs.writeFile('README.md', newReadMe, (err) =>
-        err ? console.log(err) : console.log('Successfully created README.md!'));
-    });
+            const newFile = markdown(answers)
+            writeToFile("newREADME.md", newFile)
+        })
+
 }
 
 init(questions);
