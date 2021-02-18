@@ -10,11 +10,30 @@ function renderLicenseBadge(license) {
 
 //  Create a function that returns the license link
 // If there is no license, return an empty string
-function renderLicenseLink(license) {}
+function renderLicenseLink(license) {
 
-// TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
-function renderLicenseSection(license) {}
+  var url = " ";
+  switch(license) {
+    case "Apache 2.0":
+      url = "https://opensource.org/licenses/Apache2.0";
+      break;
+    case "GNU":
+      url = "(https://www.gnu.org/licenses/gpl-3.0)";
+      break;
+    case "MIT":
+      url = "https://opensource.org/licenses/MIT";
+      break;
+    case "Creative Commons":
+      url = "(http://creativecommons.org/publicdomain/zero/1.0/)";
+      break;
+    default:
+      url = "";
+      break;
+  }
+  return url;
+}
+
+
 
 // TODO: Create a function to generate markdown for README
 generateMarkdown = (data) => {
@@ -53,7 +72,7 @@ generateMarkdown = (data) => {
 
   ## License
 
-  The project has a ${data.license} license. Learn More: ${renderLicenseLink.(data.license)}
+  [${data.license}]${renderLicenseLink.(data.license)}
 
   ## Questions
 
