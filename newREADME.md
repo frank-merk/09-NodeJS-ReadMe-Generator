@@ -33,7 +33,7 @@
 
   ## License
 
-  [Apache 2.0](https://opensource.org/licenses/Apache2.0
+  [Apache 2.0](https://opensource.org/licenses/Apache2.0)
 
   ## Questions
 
