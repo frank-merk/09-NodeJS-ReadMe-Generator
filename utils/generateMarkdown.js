@@ -89,7 +89,7 @@ generateMarkdown = (data) => {
 
   ## License
 
-  [${data.license}](https://${renderLicenseLink(data.license)}
+  [${data.license}](https://${renderLicenseLink(data.license)})
 
   ## Questions
 
