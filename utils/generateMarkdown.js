@@ -2,24 +2,25 @@
 // If there is no license, return an empty string
 function renderLicenseBadge(license) {
     let url;
+    
     switch(license ) {
       case "Apache 2.0":
-      url = "License-Apache%202.0-blue.svg";
+      url = " ![GitHub License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)";
       break;
     case "GNU":
-      url = "License-MIT-yellow.svg";
+      url = " ![GitHub License](https://img.shields.io/badge/License-MIT-yellow.svg)";
       break;
     case "MIT":
-      url = "License-MIT-yellow.svg";
+      url = " ![GitHub License](https://img.shields.io/badge/License-MIT-yellow.svg)";
       break;
     case "Creative Commons":
-      url = "License-CC%20BY%204.0-lightgrey.svg";
+      url = " ![GitHub License](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)";
       break;
     default:
       url = "";
       break;
-    }
-    return `![GitHub License](https://img.shields.io/badge/${url})`
+    } 
+    return url;
   
 }
 
@@ -55,7 +56,7 @@ generateMarkdown = (data) => {
 //ternary to create the template, filling in with info generated from user through inquire responses
   return `# ${data.project}
 
-  ${renderLicenseBadge(data.license)}
+ ${renderLicenseBadge(data.license)}
 
   ## Description
 
